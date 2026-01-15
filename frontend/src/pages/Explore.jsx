@@ -99,7 +99,7 @@ const Explore = () => {
                                 <Compass className="text-white" size={24} />
                             </div>
                             <div>
-                                <h1 className="text-2xl font-bold text-foreground">Explore</h1>
+                                <h1 className="text-2xl font-bold text-gradient-animated">Explore</h1>
                                 <p className="text-sm text-muted-foreground">Discover new people and content</p>
                             </div>
                         </div>
@@ -194,7 +194,7 @@ const Explore = () => {
 
                 {/* Stats Card - Spans 4 columns */}
                 <div className="lg:col-span-4">
-                    <div className="bg-gradient-to-br from-primary via-purple-600 to-pink-600 rounded-2xl p-6 h-full text-white relative overflow-hidden shadow-lg">
+                    <div className="bg-gradient-to-br from-violet-600 via-fuchsia-500 to-pink-500 rounded-2xl p-6 h-full text-white relative overflow-hidden shadow-lg shadow-fuchsia-500/25">
                         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
                         <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mb-10"></div>
 
@@ -293,7 +293,7 @@ const Explore = () => {
                         <TrendingUp className="text-white" size={20} />
                     </div>
                     <div>
-                        <h2 className="text-xl font-bold text-foreground">Trending</h2>
+                        <h2 className="text-xl font-bold text-shimmer">Trending</h2>
                         <p className="text-sm text-muted-foreground">Popular posts right now</p>
                     </div>
                 </div>

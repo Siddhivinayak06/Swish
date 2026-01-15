@@ -100,7 +100,7 @@ const Home = () => {
                                 <HomeIcon className="text-white" size={28} />
                             </div>
                             <div>
-                                <h1 className="text-2xl font-bold text-foreground leading-tight tracking-tight">Your Feed</h1>
+                                <h1 className="text-2xl font-bold text-gradient-animated leading-tight tracking-tight">Your Feed</h1>
                                 <p className="text-muted-foreground text-sm font-medium">See what's happening on campus</p>
                             </div>
                         </div>
@@ -139,7 +139,7 @@ const Home = () => {
                                 <button
                                     onClick={handleLoadMore}
                                     disabled={loadingMore}
-                                    className="w-full py-3 bg-card border border-border hover:border-muted-foreground/30 rounded-xl font-medium text-muted-foreground transition-all hover:shadow-sm disabled:opacity-50"
+                                    className="w-full py-3 bg-card border border-border rounded-xl font-medium text-muted-foreground load-more-glow disabled:opacity-50"
                                 >
                                     {loadingMore ? (
                                         <span className="flex items-center justify-center gap-2">

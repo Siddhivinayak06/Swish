@@ -26,7 +26,7 @@ const NavItem = ({ to, icon: IconComponent, label, badge = 0, onClick, collapsed
             <IconComponent size={20} strokeWidth={2} />
             {!collapsed && <span className="font-medium">{label}</span>}
             {badge > 0 && (
-                <span className={`${collapsed ? 'absolute -top-1 -right-1' : 'ml-auto'} bg-red-500 text-white text-[11px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center`}>
+                <span className={`${collapsed ? 'absolute -top-1 -right-1' : 'ml-auto'} bg-red-500 text-white text-[11px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center badge-pulse`}>
                     {badge > 99 ? '99+' : badge}
                 </span>
             )}
@@ -185,7 +185,7 @@ const MainLayout = () => {
                         <NavLink to="/notifications" className="relative p-2 text-muted-foreground">
                             <Bell size={22} />
                             {unreadNotifications > 0 && (
-                                <span className="absolute top-1 right-1 bg-destructive text-destructive-foreground text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">{unreadNotifications > 9 ? '9+' : unreadNotifications}</span>
+                                <span className="absolute top-1 right-1 bg-destructive text-destructive-foreground text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center badge-pulse">{unreadNotifications > 9 ? '9+' : unreadNotifications}</span>
                             )}
                         </NavLink>
                         <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2 text-muted-foreground">

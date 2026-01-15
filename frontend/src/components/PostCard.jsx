@@ -12,7 +12,9 @@ const PostCard = ({ post, compact = false, overlay = false }) => {
     const { theme } = useTheme();
     const [isLiked, setIsLiked] = useState(post.likes?.some(id => id === user?.id || id.toString?.() === user?.id));
     const [likeCount, setLikeCount] = useState(post.likes?.length || 0);
-    const [isBookmarked, setIsBookmarked] = useState(false);
+    const [isBookmarked, setIsBookmarked] = useState(
+        user?.bookmarks?.some(id => id === post._id || id.toString?.() === post._id) || false
+    );
     const [likeAnimation, setLikeAnimation] = useState(false);
     const [showComments, setShowComments] = useState(false);
     const [comments, setComments] = useState(post.comments || []);
@@ -151,6 +153,38 @@ const PostCard = ({ post, compact = false, overlay = false }) => {
                             <span className="text-[10px] font-bold text-white">{likeCount}</span>
                         </div>
                     </div>
+
+                    {/* Hover Action Buttons - Bottom Right */}
+                    <div className="absolute bottom-16 right-3 flex flex-col gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleLike();
+                            }}
+                            className="p-2 bg-black/50 backdrop-blur-md rounded-full border border-white/20 hover:bg-black/70 hover:scale-110 transition-all duration-200"
+                        >
+                            <Heart
+                                size={16}
+                                className={`transition-colors ${isLiked ? 'text-red-500 fill-red-500' : 'text-white'}`}
+                            />
+                        </button>
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsExpanded(true);
+                            }}
+                            className="p-2 bg-black/50 backdrop-blur-md rounded-full border border-white/20 hover:bg-black/70 hover:scale-110 transition-all duration-200"
+                        >
+                            <MessageCircle size={16} className="text-white" />
+                        </button>
+                    </div>
+
+                    {/* Like Animation */}
+                    {likeAnimation && (
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <Heart className="text-red-500 drop-shadow-lg animate-ping" size={60} fill="currentColor" />
+                        </div>
+                    )}
 
                     {/* Bottom Content */}
                     <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
@@ -566,6 +600,41 @@ const PostCard = ({ post, compact = false, overlay = false }) => {
                         <button onClick={() => setShowComments(true)} className="mt-2 text-xs text-muted-foreground hover:text-foreground">
                             View all {comments.length} comments
                         </button>
+                    )}
+
+                    {/* Comments List */}
+                    {showComments && (
+                        <div className="mt-3 space-y-3">
+                            <div className="flex items-center justify-between">
+                                <span className="text-xs font-semibold text-foreground">Comments ({comments.length})</span>
+                                <button onClick={() => setShowComments(false)} className="text-xs text-muted-foreground hover:text-foreground">
+                                    Hide
+                                </button>
+                            </div>
+                            <div className="space-y-3 max-h-48 overflow-y-auto custom-scrollbar">
+                                {comments.length === 0 ? (
+                                    <p className="text-xs text-muted-foreground">No comments yet. Be the first!</p>
+                                ) : (
+                                    comments.map((c, i) => (
+                                        <div key={c._id || i} className="flex gap-2">
+                                            <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center flex-shrink-0 overflow-hidden">
+                                                {c.userAvatar ? (
+                                                    <img src={getImageUrl(c.userAvatar)} alt="" className="w-full h-full object-cover" />
+                                                ) : (
+                                                    <span className="text-muted-foreground text-[10px] font-bold">{c.username?.[0]?.toUpperCase() || 'U'}</span>
+                                                )}
+                                            </div>
+                                            <div className="flex-1 min-w-0">
+                                                <p className="text-xs">
+                                                    <span className="font-semibold text-foreground mr-1">{c.username}</span>
+                                                    <span className="text-foreground/80">{c.text}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                        </div>
                     )}
 
                     {/* Inline Comment Input */}

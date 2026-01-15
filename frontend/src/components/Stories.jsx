@@ -198,7 +198,7 @@ const Stories = () => {
             <div className="flex gap-4 pb-2">
                 {/* Add Story Button - Hidden file input handled by label */}
                 <div className="flex flex-col items-center min-w-[64px] flex-shrink-0">
-                    <label className="w-16 h-16 rounded-full bg-gradient-to-br from-primary via-purple-500 to-pink-500 p-[2px] cursor-pointer hover:scale-105 transition-transform shadow-lg shadow-primary/25 relative group">
+                    <label className="w-16 h-16 rounded-full bg-gradient-to-br from-primary via-purple-500 to-pink-500 p-[2px] cursor-pointer hover:scale-105 transition-transform shadow-lg shadow-primary/25 relative group animate-glow-pulse">
                         <div className="w-full h-full rounded-full bg-card flex items-center justify-center group-hover:bg-transparent transition-colors">
                             <input type="file" className="hidden" onChange={handleUpload} accept="image/*,video/*" />
                             {uploading ? (
@@ -225,7 +225,7 @@ const Stories = () => {
                             setProgress(0);
                         }}
                     >
-                        <div className="w-16 h-16 rounded-full p-0.5 bg-gradient-to-br from-primary via-purple-500 to-pink-500 flex-shrink-0 group-hover:scale-105 transition-transform shadow-lg shadow-primary/20">
+                        <div className="w-16 h-16 rounded-full p-0.5 bg-gradient-to-br from-primary via-purple-500 to-pink-500 flex-shrink-0 group-hover:scale-105 transition-transform shadow-lg shadow-primary/20 story-ring-unseen">
                             {group.user.profileData?.avatarUrl ? (
                                 <img
                                     src={getMediaUrl(group.user.profileData.avatarUrl)}
