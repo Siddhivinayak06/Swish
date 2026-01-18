@@ -87,9 +87,9 @@ const Explore = () => {
                 {/* Search Card - Spans 8 columns */}
                 {/* Search Card - Spans 8 columns */}
                 <div className="lg:col-span-8 relative z-20">
-                    <div className="glass-card p-6 h-full relative group overflow-hidden">
+                    <div className="glass-card p-6 h-full relative group">
                         {/* Decorative Gradient Blob - Wrapped to prevent overflow clipping of dropdown */}
-                        <div className="absolute inset-0 pointer-events-none">
+                        <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 animate-pulse"></div>
                             <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl -ml-10 -mb-10 animate-pulse delay-700"></div>
                         </div>
@@ -125,7 +125,7 @@ const Explore = () => {
 
                             {/* Search Results */}
                             {searchResults.length > 0 && (
-                                <div className="absolute top-full mt-2 w-full bg-popover border border-border rounded-xl overflow-hidden z-[100] shadow-2xl animate-in fade-in zoom-in-95 duration-200 max-h-[400px] overflow-y-auto">
+                                <div className="relative mt-4 w-full bg-popover/50 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 max-h-[400px] overflow-y-auto">
 
                                     {/* Users Section */}
                                     {searchResults.some(r => r.type === 'user') && (

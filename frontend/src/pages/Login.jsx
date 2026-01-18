@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { ArrowRight, Loader2, AlertCircle, Mail } from 'lucide-react';
 import axios from 'axios';
+import { getApiUrl } from '../utils/url';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -13,10 +14,12 @@ const Login = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
 
+
+
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const res = await axios.get('/auth/public-stats');
+                const res = await axios.get(`${getApiUrl()}/auth/public-stats`);
                 setStats(res.data);
             } catch (err) {
                 console.error("Failed to fetch public stats", err);
